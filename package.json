@@ -1,7 +1,7 @@
 {
   "name": "react-native-apple-mapkit-directions",
   "version": "0.2.0",
-  "description": "test",
+  "description": "React Native wrapper for Apple MapKit Directions",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -38,7 +38,11 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "Apple",
+    "MapKit",
+    "directions",
+    "react-native-maps"
   ],
   "repository": "https://github.com/Splicer97/react-native-apple-mapkit-directions",
   "author": "Splicer97 <kovancov@gmail.com> (https://github.com/Splicer97)",
