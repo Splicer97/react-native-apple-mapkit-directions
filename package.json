@@ -1,6 +1,6 @@
 {
   "name": "react-native-apple-mapkit-directions",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "React Native wrapper for Apple MapKit Directions",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
