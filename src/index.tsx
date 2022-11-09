@@ -1,22 +1,32 @@
-import { NativeModules, Platform } from 'react-native';
+import { NativeModules } from 'react-native';
 
-const LINKING_ERROR =
-  `The package 'react-native-apple-mapkit-directions' doesn't seem to be linked. Make sure: \n\n` +
-  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
-  '- You rebuilt the app after installing the package\n' +
-  '- You are not using Expo Go\n';
+const { AppleMapkitDirections } = NativeModules;
 
-const AppleMapkitDirections = NativeModules.AppleMapkitDirections
-  ? NativeModules.AppleMapkitDirections
-  : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(LINKING_ERROR);
-        },
-      }
-    );
+export type MapKitTransitType = 'automobile' | 'walking' | 'transit' | 'any';
 
-export function multiply(a: number, b: number): Promise<number> {
-  return AppleMapkitDirections.multiply(a, b);
+export enum MapKitTransit {
+  AUTOMOBILE = 'automobile',
+  WALKING = 'walking',
+  TRANSIT = 'transit',
+  ANY = 'any',
 }
+
+export type LatLng = { latitude: number; longitude: number };
+export type MapKitDirectionsType = {
+  distance: number;
+  expectedTravelTime: number;
+  name: string;
+  advisoryNotices: string[];
+  coordinates: LatLng[];
+};
+
+export const getAppleMapKitDirections = (
+  origin: LatLng,
+  destination: LatLng,
+  transitType: MapKitTransitType
+): Promise<MapKitDirectionsType> =>
+  AppleMapkitDirections.getAppleMapKitDirections(
+    origin,
+    destination,
+    transitType
+  );

@@ -1,31 +1,48 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-apple-mapkit-directions';
+import { StyleSheet } from 'react-native';
+import {
+  getAppleMapKitDirections,
+  MapKitTransit,
+} from 'react-native-apple-mapkit-directions';
+import MapView, { LatLng, Polyline } from 'react-native-maps';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
+  const styles = StyleSheet.create({
+    map: {
+      ...StyleSheet.absoluteFillObject,
+    },
+  });
+  const origin = {
+    latitude: 55.751244,
+    longitude: 37.618423,
+  };
+  const destination = {
+    latitude: 59.9375,
+    longitude: 30.308611,
+  };
+  const transitType = MapKitTransit.AUTOMOBILE;
+  const [state, setState] = React.useState<LatLng[]>();
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+    const getPoints = async () => {
+      try {
+        const points = await getAppleMapKitDirections(
+          origin,
+          destination,
+          transitType
+        );
+        setState(points.coordinates);
+      } catch (error) {
+        console.log('error', error);
+      }
+    };
+    getPoints();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <MapView style={styles.map}>
+      {state && <Polyline coordinates={state} />}
+    </MapView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-});
