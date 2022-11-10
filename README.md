@@ -15,6 +15,12 @@ or
 yarn add react-native-apple-mapkit-directions
 ```
 
+then install pod
+
+```sh
+cd ios && pod install
+```
+
 ## Usage
 
 ```js
