@@ -24,7 +24,7 @@ cd ios && pod install
 ## Usage
 
 ```js
-import { getAppleMapKitDirections } from 'react-native-maps-apple-directions';
+import { getAppleMapKitDirections } from 'react-native-apple-mapkit-directions';
 
 // ...
 const origin = {
@@ -49,7 +49,7 @@ import MapView, { LatLng, Polyline } from 'react-native-maps';
 import {
   getAppleMapKitDirections,
   MapKitTransit,
-} from 'react-native-maps-apple-directions';
+} from 'react-native-apple-mapkit-directions';
 
 export default function App() {
   const styles = StyleSheet.create({
