@@ -2,6 +2,7 @@
 
 React Native wrapper for Apple MapKit Directions.
 You can get distance, expectedTravelTime, name, advisoryNotices or coordinates.
+Work ONLY for IOS!
 
 ## Installation
 
@@ -24,7 +25,10 @@ cd ios && pod install
 ## Usage
 
 ```js
-import { getAppleMapKitDirections } from 'react-native-apple-mapkit-directions';
+import {
+  getAppleMapKitDirections,
+  MapKitTransit,
+} from 'react-native-apple-mapkit-directions';
 
 // ...
 const origin = {
