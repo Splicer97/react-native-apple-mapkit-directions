@@ -1,4 +1,4 @@
-import { NativeModules } from 'react-native';
+import { NativeModules, Platform } from 'react-native';
 
 const { AppleMapkitDirections } = NativeModules;
 
@@ -25,8 +25,10 @@ export const getAppleMapKitDirections = (
   destination: LatLng,
   transitType: MapKitTransitType
 ): Promise<MapKitDirectionsType> =>
-  AppleMapkitDirections.getAppleMapKitDirections(
-    origin,
-    destination,
-    transitType
-  );
+  Platform.OS === 'ios'
+    ? AppleMapkitDirections.getAppleMapKitDirections(
+        origin,
+        destination,
+        transitType
+      )
+    : console.error(`AppleMapkitDirections not working on ${Platform.OS}`);

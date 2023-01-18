@@ -73,15 +73,17 @@ export default function App() {
   const [state, setState] = React.useState<LatLng[]>();
   React.useEffect(() => {
     const getPoints = async () => {
-      try {
-        const points = await getAppleMapKitDirections(
-          origin,
-          destination,
-          transitType
-        );
-        setState(points.coordinates);
-      } catch (error) {
-        console.log('error', error);
+      if (Platform.OS === 'ios') {
+        try {
+          const points = await getAppleMapKitDirections(
+            origin,
+            destination,
+            transitType
+          );
+          setState(points.coordinates);
+        } catch (error) {
+          console.log('error', error);
+        }
       }
     };
     getPoints();

@@ -1,18 +1,13 @@
 import * as React from 'react';
 
-import { StyleSheet } from 'react-native';
+import { Text, View } from 'react-native';
 import {
   getAppleMapKitDirections,
+  LatLng,
   MapKitTransit,
 } from 'react-native-apple-mapkit-directions';
-import MapView, { LatLng, Polyline } from 'react-native-maps';
 
 export default function App() {
-  const styles = StyleSheet.create({
-    map: {
-      ...StyleSheet.absoluteFillObject,
-    },
-  });
   const origin = {
     latitude: 55.751244,
     longitude: 37.618423,
@@ -31,7 +26,7 @@ export default function App() {
           destination,
           transitType
         );
-        setState(points.coordinates);
+        setState(points?.coordinates);
       } catch (error) {
         console.log('error', error);
       }
@@ -41,8 +36,8 @@ export default function App() {
   }, []);
 
   return (
-    <MapView style={styles.map}>
-      {state && <Polyline coordinates={state} />}
-    </MapView>
+    <View>
+      <Text>{state}</Text>
+    </View>
   );
 }
