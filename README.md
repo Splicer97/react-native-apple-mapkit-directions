@@ -1,4 +1,4 @@
-# react-native-apple-mapkit-directions
+# react-native-apple-mapkit-directions [![npm version](https://img.shields.io/npm/v/react-native-apple-mapkit-directions.svg?style=flat)](https://www.npmjs.com/package/react-native-apple-mapkit-directions) [![Downloads](https://img.shields.io/npm/dm/react-native-apple-mapkit-directions.svg)](http://www.npmtrends.com/react-native-apple-mapkit-directions)
 
 React Native wrapper for Apple MapKit Directions.
 You can get distance, expectedTravelTime, name, advisoryNotices or coordinates.
